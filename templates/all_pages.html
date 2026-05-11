@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Tg Store</title>
+    <link rel="stylesheet" href="/static/main.css">
+    <script async src="https://telegram.org/js/telegram-widget.js?21" data-telegram-login="FreshTgStoreBot" data-size="large" data-auth-url="/auth/telegram" data-request-access="write"></script>
+</head>
+<body>
+    <nav> ... navigation ... </nav>
+    
+    <div id="home-section" class="section active">
+        <!-- Home page content -->
+    </div>
+    <div id="login-section" class="section">
+        <div class="telegram-login"></div>
+    </div>
+    <div id="dashboard-section" class="section">
+        <!-- filled by JS -->
+    </div>
+    <!-- other sections (stock, orders, api-docs, admin, etc.) -->
+    
+    <script>
+        // Simple SPA routing
+        window.addEventListener('hashchange', route);
+        function route() {
+            const hash = location.hash.slice(1) || 'home';
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(hash + '-section')?.classList.add('active');
+            if (hash === 'dashboard') loadDashboard();
+            else if (hash === 'admin') loadAdmin();
+            // etc.
+        }
+        route();
+
+        async function loadDashboard() {
+            const res = await fetch('/api/dashboard');
+            const data = await res.json();
+            // populate HTML
+        }
+        // ... other JS
+    </script>
+</body>
+</html>
