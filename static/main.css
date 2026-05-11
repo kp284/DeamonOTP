@@ -1,0 +1,21 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#0a0a0a; color:#e0e0e0; font-family: 'Segoe UI', sans-serif; }
+.section { display:none; padding:20px; max-width:1200px; margin:auto; }
+.section.active { display:block; }
+/* Glassmorphism cards */
+.card {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    margin: 10px 0;
+    transition: transform 0.2s;
+}
+.card:hover { transform: translateY(-2px); }
+.gradient-text {
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/* ... many more styles for neon, animations, responsive ... */
